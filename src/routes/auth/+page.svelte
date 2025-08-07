@@ -185,8 +185,23 @@
 			id="auth-container"
 		>
 			<div class="w-full px-10 min-h-screen flex flex-col text-center">
+				
+	
+
 				{#if ($config?.features.auth_trusted_header ?? false) || $config?.features.auth === false}
-					<div class=" my-auto pb-10 w-full sm:max-w-md">
+					<div class="pb-10 w-full sm:max-w-md">
+						<div class="flex items-center justify-center">
+		
+							<img
+								crossorigin="anonymous"
+								src="{WEBUI_BASE_URL}/static/logo-full.png"
+								class="p-2 w-[60%]"
+							/>
+						
+					</div>
+						
+						
+						
 						<div
 							class="flex items-center justify-center gap-3 text-xl sm:text-2xl text-center font-semibold dark:text-gray-200"
 						>
@@ -201,7 +216,15 @@
 					</div>
 				{:else}
 					<div class="my-auto flex flex-col justify-center items-center">
-						<div class=" sm:max-w-md my-auto pb-10 w-full dark:text-gray-100">
+						<div class="flex items-center justify-center">
+		
+							<img
+								crossorigin="anonymous"
+								src="{WEBUI_BASE_URL}/static/logo-full.png"
+								class="p-2 w-[60%]"
+							/>
+						
+					</div><div class=" sm:max-w-md my-auto pb-10 w-full dark:text-gray-100">
 							<form
 								class=" flex flex-col justify-center"
 								on:submit={(e) => {
@@ -210,18 +233,8 @@
 								}}
 							>
 								<div class="mb-1">
-									<div class=" text-2xl font-medium">
-										{#if $config?.onboarding ?? false}
-											{$i18n.t(`Get started with {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-										{:else if mode === 'ldap'}
-											{$i18n.t(`Sign in to {{WEBUI_NAME}} with LDAP`, { WEBUI_NAME: $WEBUI_NAME })}
-										{:else if mode === 'signin'}
-											{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-										{:else}
-											{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-										{/if}
-									</div>
-
+									
+									
 									{#if $config?.onboarding ?? false}
 										<div class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-500">
 											ⓘ {$WEBUI_NAME}
@@ -505,18 +518,6 @@
 			</div>
 		</div>
 
-		<div class="fixed m-10 z-50">
-			<div class="flex space-x-2">
-				<div class=" self-center">
-					<img
-						id="logo"
-						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class=" w-6 rounded-full"
-						alt=""
-					/>
-				</div>
-			</div>
-		</div>
+		
 	{/if}
 </div>
