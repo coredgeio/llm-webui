@@ -1,0 +1,4 @@
+token_tracking:
+  enabled: true
+  persist: true  # store usage data
+  display_per_message: true
