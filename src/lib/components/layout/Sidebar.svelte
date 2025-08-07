@@ -480,6 +480,18 @@
 			? ''
 			: 'invisible'}"
 	>
+
+	<div class="flex items-center justify-center">
+		
+			<img
+				crossorigin="anonymous"
+				src="{WEBUI_BASE_URL}/static/logo-full.png"
+				class="p-2 w-[70%]"
+			/>
+		
+	</div>
+
+
 		<div class="px-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
 			<button
 				class=" cursor-pointer p-[7px] flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-900 transition"
@@ -528,14 +540,7 @@
 				}}
 			>
 				<div class="flex items-center">
-					<div class="self-center mx-1.5">
-						<img
-							crossorigin="anonymous"
-							src="{WEBUI_BASE_URL}/static/favicon.png"
-							class="sidebar-new-chat-icon size-5 -translate-x-1.5 rounded-full"
-							alt="logo"
-						/>
-					</div>
+					
 					<div class=" self-center text-sm text-gray-850 dark:text-white font-primary">
 						{$i18n.t('New Chat')}
 					</div>
@@ -1030,6 +1035,7 @@
 </div>
 
 <style>
+
 	.scrollbar-hidden:active::-webkit-scrollbar-thumb,
 	.scrollbar-hidden:focus::-webkit-scrollbar-thumb,
 	.scrollbar-hidden:hover::-webkit-scrollbar-thumb {
