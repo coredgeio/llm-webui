@@ -30,6 +30,7 @@
 	let password = '';
 
 	let ldapUsername = '';
+    let isDarkMode = false; 
 
 	const querystringValue = (key) => {
 		const querystring = window.location.search;
@@ -146,7 +147,7 @@
 			goto(redirectPath);
 		}
 		await checkOauthCallback();
-
+		isDarkMode = document.documentElement.classList.contains('dark'); 
 		loaded = true;
 		setLogoImage();
 
@@ -199,12 +200,12 @@
 				{#if ($config?.features.auth_trusted_header ?? false) || $config?.features.auth === false}
 					<div class=" my-auto pb-10 w-full sm:max-w-md">
 						<div class="flex items-center justify-center">
-		
 							<img
-								crossorigin="anonymous"
-								src="{WEBUI_BASE_URL}/static/logo-full.png"
-								class="p-2 w-[60%]"
-							/>
+							crossorigin="anonymous"
+							src="{isDarkMode ? `${WEBUI_BASE_URL}/static/splash-dark.png` : `${WEBUI_BASE_URL}/static/logo-full.png`}"
+							class="p-2 w-[60%]"
+							alt="{$WEBUI_NAME} Logo"
+						/>
 						
 					</div>
 						<div
@@ -223,12 +224,13 @@
 					<div class="my-auto flex flex-col justify-center items-center">
 						<div class="flex items-center justify-center">
 		
-							<img
+								<img
 								crossorigin="anonymous"
-								src="{WEBUI_BASE_URL}/static/logo-full.png"
+								src="{isDarkMode ? `${WEBUI_BASE_URL}/static/splash-dark.png` : `${WEBUI_BASE_URL}/static/logo-full.png`}"
 								class="p-2 w-[60%]"
+								alt="{$WEBUI_NAME} Logo"
 							/>
-						
+							
 					</div><div class=" sm:max-w-md my-auto pb-10 w-full dark:text-gray-100">
 							<form
 								class=" flex flex-col justify-center"
