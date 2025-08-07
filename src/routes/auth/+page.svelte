@@ -30,7 +30,7 @@
 	let password = '';
 
 	let ldapUsername = '';
-    let isDarkMode = false; 
+    let isDarkMode = false;
 
 	const querystringValue = (key) => {
 		const querystring = window.location.search;
