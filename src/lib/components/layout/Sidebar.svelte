@@ -61,7 +61,7 @@
 	import FolderModal from './Sidebar/Folders/FolderModal.svelte';
 
 	const BREAKPOINT = 768;
-
+	let isDarkMode = false;
 	let navElement;
 	let shiftKey = false;
 
@@ -388,6 +388,7 @@
 		dropZone?.addEventListener('dragover', onDragOver);
 		dropZone?.addEventListener('drop', onDrop);
 		dropZone?.addEventListener('dragleave', onDragLeave);
+		isDarkMode = document.documentElement.classList.contains('dark');
 	});
 
 	onDestroy(() => {
@@ -484,11 +485,11 @@
 	<div class="flex items-center justify-center">
 		
 		<img
-			crossorigin="anonymous"
-			src="{WEBUI_BASE_URL}/static/logo-full.png"
-			class="p-2 w-[70%]"
-		/>
-	
+		crossorigin="anonymous"
+		src="{isDarkMode ? `${WEBUI_BASE_URL}/static/splash-dark.png` : `${WEBUI_BASE_URL}/static/logo-full.png`}"
+		class="p-2 w-[60%]"
+		
+	/>
 </div>
 
 		<div class="px-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
@@ -539,7 +540,6 @@
 				}}
 			>
 				<div class="flex items-center">
-
 					<div class=" self-center text-sm text-gray-850 dark:text-white font-primary">
 						{$i18n.t('New Chat')}
 					</div>
