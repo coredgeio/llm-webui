@@ -32,7 +32,15 @@ RUN apk add --no-cache git
 COPY package.json package-lock.json ./
 RUN npm ci --force
 
+# ✅ CREATE static/pyodide directory and placeholder package.json
+#     This fixes: "Error: ENOENT: no such file or directory, open 'static/pyodide/package.json'"
+RUN mkdir -p static/pyodide && \
+    echo '{"name":"pyodide-cache","private":true,"version":"0.0.1"}' > static/pyodide/package.json
 COPY . .
+ 
+# ✅ Increase Node.js memory limit to 4GB
+#     This fixes: "FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory"
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 ENV APP_BUILD_HASH=${BUILD_HASH}
 RUN npm run build
 
